@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2016 a las 17:34:13
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.5.37
+-- Host: 127.0.0.1
+-- Generation Time: Dec 05, 2016 at 03:57 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `almacen`
+-- Database: `almacen`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `acceso`
+-- Table structure for table `acceso`
 --
 
 CREATE TABLE `acceso` (
@@ -34,7 +34,7 @@ CREATE TABLE `acceso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `acceso`
+-- Dumping data for table `acceso`
 --
 
 INSERT INTO `acceso` (`id_acc`, `id_mod`, `id_per`, `estado`) VALUES
@@ -58,7 +58,7 @@ INSERT INTO `acceso` (`id_acc`, `id_mod`, `id_per`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `concepto_general`
+-- Table structure for table `concepto_general`
 --
 
 CREATE TABLE `concepto_general` (
@@ -68,17 +68,18 @@ CREATE TABLE `concepto_general` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `concepto_general`
+-- Dumping data for table `concepto_general`
 --
 
 INSERT INTO `concepto_general` (`id_con`, `desc_con`, `estado`) VALUES
 (1, 'MATERIALES DE ESCRITORIO Y MATERIALES DE IMPRESIÓN', 'A'),
-(2, 'MATERIALES DE CONSTRUCCIÓN, HERRAMIENTAS Y OTROS BIENES', 'A');
+(2, 'MATERIALES DE CONSTRUCCIÓN, HERRAMIENTAS Y OTROS BIENES', 'A'),
+(3, 'Gasolina, Petroleo Gaby', 'A');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `det_movimiento`
+-- Table structure for table `det_movimiento`
 --
 
 CREATE TABLE `det_movimiento` (
@@ -98,7 +99,7 @@ CREATE TABLE `det_movimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `det_movimiento`
+-- Dumping data for table `det_movimiento`
 --
 
 INSERT INTO `det_movimiento` (`id_dmov`, `id_mov`, `id_pro`, `id_uni`, `pre_uni`, `cant_pro`, `stock_fis_ant`, `stock_val_ant`, `stock_fis_act`, `stock_val_act`, `stock_act`, `cant_ent`, `stock_res`) VALUES
@@ -108,12 +109,19 @@ INSERT INTO `det_movimiento` (`id_dmov`, `id_mov`, `id_pro`, `id_uni`, `pre_uni`
 (7, 4, 2, 2, '0.00', 10, NULL, NULL, NULL, NULL, '12.00', '10.00', '2.00'),
 (8, 4, 1, 2, '0.00', 20, NULL, NULL, NULL, NULL, '20.00', '20.00', '0.00'),
 (9, 5, 3, 2, '12.00', 15, NULL, NULL, NULL, NULL, '0.00', '15.00', '15.00'),
-(17, 7, 2, 1, '1.00', 1, NULL, NULL, NULL, NULL, '2.00', '1.00', '1.00');
+(17, 7, 2, 1, '1.00', 1, NULL, NULL, NULL, NULL, '2.00', '1.00', '1.00'),
+(18, 8, 4, 2, '13.00', 10, NULL, NULL, NULL, NULL, '0.00', '10.00', '10.00'),
+(19, 9, 4, 3, '0.00', 2, NULL, NULL, NULL, NULL, '10.00', '2.00', '8.00'),
+(20, 10, 5, 2, '13.00', 24, NULL, NULL, NULL, NULL, '0.00', '24.00', '24.00'),
+(21, 11, 7, 2, '0.52', 100, NULL, NULL, NULL, NULL, '0.00', '100.00', '100.00'),
+(22, 11, 15, 2, '1.00', 20, NULL, NULL, NULL, NULL, '0.00', '20.00', '20.00'),
+(23, 11, 12, 2, '2.50', 50, NULL, NULL, NULL, NULL, '0.00', '50.00', '50.00'),
+(24, 12, 4, 4, '13.00', 2, NULL, NULL, NULL, NULL, '8.00', '2.00', '6.00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `entidad`
+-- Table structure for table `entidad`
 --
 
 CREATE TABLE `entidad` (
@@ -123,17 +131,22 @@ CREATE TABLE `entidad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `entidad`
+-- Dumping data for table `entidad`
 --
 
 INSERT INTO `entidad` (`id_ent`, `desc_ent`, `estado`) VALUES
-(1, 'CONSELVA', 'A'),
-(2, 'Comercial el Sol', 'A');
+(1, 'Gerencia', 'A'),
+(2, 'Sub Gerencia Infraestructura', 'A'),
+(3, 'Administracion', 'A'),
+(4, 'Recursos Humanos (RR.HH)', 'A'),
+(5, 'Almacen', 'A'),
+(6, 'Logistica', 'A'),
+(7, 'Contabilidad', 'A');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `material`
+-- Table structure for table `material`
 --
 
 CREATE TABLE `material` (
@@ -145,7 +158,7 @@ CREATE TABLE `material` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modulo`
+-- Table structure for table `modulo`
 --
 
 CREATE TABLE `modulo` (
@@ -160,7 +173,7 @@ CREATE TABLE `modulo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `modulo`
+-- Dumping data for table `modulo`
 --
 
 INSERT INTO `modulo` (`id_mod`, `name_mod`, `alone`, `id_padre`, `url`, `orden`, `icon`, `estado`) VALUES
@@ -184,7 +197,7 @@ INSERT INTO `modulo` (`id_mod`, `name_mod`, `alone`, `id_padre`, `url`, `orden`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `movimiento`
+-- Table structure for table `movimiento`
 --
 
 CREATE TABLE `movimiento` (
@@ -201,20 +214,25 @@ CREATE TABLE `movimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `movimiento`
+-- Dumping data for table `movimiento`
 --
 
 INSERT INTO `movimiento` (`id_mov`, `id_tmov`, `id_pers`, `id_proc`, `id_ent`, `fecha_mov`, `fac_mov`, `estado`, `fecha_hora_reg`, `solicitante`) VALUES
 (2, 1, NULL, 1, 0, '2016-09-26', '3452', 'I', '2016-11-09 15:29:13', NULL),
-(3, 1, NULL, 1, 0, '2016-11-15', '123457', 'A', '2016-11-15 23:28:36', NULL),
-(4, 2, NULL, 1, 0, '2016-11-16', '12548', 'A', '2016-11-16 13:37:58', NULL),
-(5, 1, NULL, 1, 0, '2016-11-16', '34521', 'A', '2016-11-16 13:39:13', NULL),
-(7, 2, NULL, 1, 0, '2016-11-07', 'asasas', 'A', '2016-11-24 16:22:35', 'asasasas');
+(3, 1, NULL, 1, 0, '2016-11-15', '123457', 'I', '2016-11-30 23:48:35', NULL),
+(4, 2, NULL, 1, 0, '2016-11-16', '12548', 'I', '2016-11-30 23:48:42', NULL),
+(5, 1, NULL, 1, 0, '2016-11-16', '34521', 'I', '2016-11-29 23:12:24', NULL),
+(7, 2, NULL, 1, 0, '2016-11-07', 'asasas', 'I', '2016-11-30 23:48:40', 'asasasas'),
+(8, 1, NULL, 2, 6, '2016-10-04', 'F/.0001-024856', 'A', '2016-11-30 23:37:11', 'JUAN CARLOS'),
+(9, 2, NULL, 2, 5, '2016-11-06', 'F_0001-024555', 'A', '2016-11-30 23:51:23', 'LUIS OLIVARES'),
+(10, 1, NULL, 2, 6, '2016-11-08', 'F/.0001-335565', 'A', '2016-11-30 23:54:05', 'JUAN CARLOS'),
+(11, 1, NULL, 2, 6, '2016-11-15', 'F/.0001-54955', 'A', '2016-12-01 00:17:59', 'JUAN CARLOS'),
+(12, 2, NULL, 2, 0, '2016-11-28', 'f/.0002-5545', 'A', '2016-12-05 02:52:20', 'Brett');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfil`
+-- Table structure for table `perfil`
 --
 
 CREATE TABLE `perfil` (
@@ -224,7 +242,7 @@ CREATE TABLE `perfil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `perfil`
+-- Dumping data for table `perfil`
 --
 
 INSERT INTO `perfil` (`id_per`, `name_per`, `estado`) VALUES
@@ -233,7 +251,7 @@ INSERT INTO `perfil` (`id_per`, `name_per`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `persona`
+-- Table structure for table `persona`
 --
 
 CREATE TABLE `persona` (
@@ -253,7 +271,7 @@ CREATE TABLE `persona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `persona`
+-- Dumping data for table `persona`
 --
 
 INSERT INTO `persona` (`id_pers`, `id_per`, `nombre_pers`, `apaterno_pers`, `amaterno_pers`, `sexo_pers`, `direccion_pers`, `fnacimiento_pers`, `telefono_pers`, `dni_pers`, `name_usu`, `pass_usu`, `estado`) VALUES
@@ -264,7 +282,7 @@ INSERT INTO `persona` (`id_pers`, `id_per`, `nombre_pers`, `apaterno_pers`, `ama
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `procedencia`
+-- Table structure for table `procedencia`
 --
 
 CREATE TABLE `procedencia` (
@@ -274,19 +292,19 @@ CREATE TABLE `procedencia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `procedencia`
+-- Dumping data for table `procedencia`
 --
 
 INSERT INTO `procedencia` (`id_proc`, `desc_proc`, `estado`) VALUES
 (1, 'Chazuta', 'A'),
-(2, 'Tarapoto', 'A'),
-(3, 'Consuelo', 'A'),
-(4, 'Barranquita', 'A');
+(2, 'GTBM-T', 'A'),
+(3, 'Aldea Infatil', 'A'),
+(4, 'Bellavista', 'A');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Table structure for table `producto`
 --
 
 CREATE TABLE `producto` (
@@ -300,18 +318,41 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Dumping data for table `producto`
 --
 
 INSERT INTO `producto` (`id_pro`, `id_con`, `desc_pro`, `cuenta_contable`, `clasificador`, `stock_pro`, `estado`) VALUES
-(1, 1, 'ABRAZADERAS', '1301.1101', '2.3.1.11.1.1', '0.00', 'A'),
-(2, 1, 'ABRAZADERAS DE 4"', '1301.1101', '2.3.1.11.1.1', '1.00', 'A'),
-(3, 2, 'Tubos para flujo de corriente', '12548', '12541', '15.00', 'A');
+(1, 1, 'ABRAZADERAS', '1301.1101', '2.3.1.11.1.1', '0.00', 'I'),
+(2, 1, 'ABRAZADERAS DE 4"', '1301.1101', '2.3.1.11.1.1', '1.00', 'I'),
+(3, 2, 'Tubos para flujo de corriente', '12548', '12541', '15.00', 'A'),
+(4, 1, 'PAPEL BOND A4', '0', '2.3.1.5.1.2', '6.00', 'A'),
+(5, 1, 'ARCHIVADOR TAMAÑO OFICIO', '0', '2.3.1.5.1.2', '24.00', 'A'),
+(6, 1, 'BINDER CLIP METALICO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(7, 1, 'BOLIGRAFO TINTA AZUL', '0', '2.3.1.5.1.2', '100.00', 'A'),
+(8, 1, 'BOLIGRAFO TINTA NEGRO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(9, 1, 'BOLIGRAFO TINTA ROJO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(10, 1, 'CLIP METALICO STANDAR', '0', '2.3.1.5.1.2', NULL, 'A'),
+(11, 1, 'COLA SINTETICA', '0', '2.3.1.5.1.2', NULL, 'A'),
+(12, 1, 'CORRECTOR LIQUIDO', '0', '2.3.1.5.1.2', '50.00', 'A'),
+(13, 1, 'GOMA EN BARRA', '0', '2.3.1.5.1.2', NULL, 'A'),
+(14, 1, 'GOMA LIQUIDA FRASCO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(15, 1, 'GRAPA 26/6', '0', '2.3.1.5.1.2', '20.00', 'A'),
+(16, 1, 'FASTENER METALICO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(17, 1, 'FOLDER MANILLA TAMAÑO A4', '0', '2.3.1.5.1.2', NULL, 'A'),
+(18, 1, 'FOLDER MANILLA TAMAÑO OFICIO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(19, 1, 'LAPIZ DE MADERA', '0', '2.3.1.5.1.2', NULL, 'A'),
+(20, 1, 'NOTA ADHENSIVA COLORES 3X3 BLOCK X100', '0', '2.3.1.5.1.2', NULL, 'A'),
+(21, 1, 'PAPEL LUSTRE', '0', '2.3.1.5.1.2', NULL, 'A'),
+(22, 1, 'SACAGRAPA DE METAL', '0', '2.3.1.5.1.2', NULL, 'A'),
+(23, 1, 'SOBRE MANILLA TAMAÑO A4', '0', '2.3.1.5.1.2', NULL, 'A'),
+(24, 1, 'SOBRE MANILLA TAMAÑO MEDIO OFICIO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(25, 1, 'SOBRE MANILLA TAMAÑO OFICIO', '0', '2.3.1.5.1.2', NULL, 'A'),
+(26, 1, 'TAJADOR DE METAL', '0', '2.3.1.5.1.2', NULL, 'A');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proveedor`
+-- Table structure for table `proveedor`
 --
 
 CREATE TABLE `proveedor` (
@@ -323,7 +364,7 @@ CREATE TABLE `proveedor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `proveedor`
+-- Dumping data for table `proveedor`
 --
 
 INSERT INTO `proveedor` (`id_prov`, `desc_prov`, `dir_prov`, `tel_prov`, `estado`) VALUES
@@ -332,7 +373,7 @@ INSERT INTO `proveedor` (`id_prov`, `desc_prov`, `dir_prov`, `tel_prov`, `estado
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_movimiento`
+-- Table structure for table `tipo_movimiento`
 --
 
 CREATE TABLE `tipo_movimiento` (
@@ -341,7 +382,7 @@ CREATE TABLE `tipo_movimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tipo_movimiento`
+-- Dumping data for table `tipo_movimiento`
 --
 
 INSERT INTO `tipo_movimiento` (`id_tmov`, `desc_tmov`) VALUES
@@ -351,7 +392,7 @@ INSERT INTO `tipo_movimiento` (`id_tmov`, `desc_tmov`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `unidad_medida`
+-- Table structure for table `unidad_medida`
 --
 
 CREATE TABLE `unidad_medida` (
@@ -362,19 +403,21 @@ CREATE TABLE `unidad_medida` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `unidad_medida`
+-- Dumping data for table `unidad_medida`
 --
 
 INSERT INTO `unidad_medida` (`id_uni`, `desc_uni`, `cant_uni`, `estado`) VALUES
 (1, 'KG', 1, 'A'),
-(2, 'UND', 1, 'A');
+(2, 'UND', 1, 'A'),
+(3, 'MILLAR', 1, 'A'),
+(4, 'PQUT.', 1, 'A');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `acceso`
+-- Indexes for table `acceso`
 --
 ALTER TABLE `acceso`
   ADD PRIMARY KEY (`id_acc`),
@@ -382,160 +425,160 @@ ALTER TABLE `acceso`
   ADD KEY `perfil_acceso_fk` (`id_per`);
 
 --
--- Indices de la tabla `concepto_general`
+-- Indexes for table `concepto_general`
 --
 ALTER TABLE `concepto_general`
   ADD PRIMARY KEY (`id_con`);
 
 --
--- Indices de la tabla `det_movimiento`
+-- Indexes for table `det_movimiento`
 --
 ALTER TABLE `det_movimiento`
   ADD PRIMARY KEY (`id_dmov`);
 
 --
--- Indices de la tabla `entidad`
+-- Indexes for table `entidad`
 --
 ALTER TABLE `entidad`
   ADD PRIMARY KEY (`id_ent`);
 
 --
--- Indices de la tabla `modulo`
+-- Indexes for table `modulo`
 --
 ALTER TABLE `modulo`
   ADD PRIMARY KEY (`id_mod`);
 
 --
--- Indices de la tabla `movimiento`
+-- Indexes for table `movimiento`
 --
 ALTER TABLE `movimiento`
   ADD PRIMARY KEY (`id_mov`);
 
 --
--- Indices de la tabla `perfil`
+-- Indexes for table `perfil`
 --
 ALTER TABLE `perfil`
   ADD PRIMARY KEY (`id_per`);
 
 --
--- Indices de la tabla `persona`
+-- Indexes for table `persona`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`id_pers`),
   ADD KEY `fk_perfil_persona` (`id_per`);
 
 --
--- Indices de la tabla `procedencia`
+-- Indexes for table `procedencia`
 --
 ALTER TABLE `procedencia`
   ADD PRIMARY KEY (`id_proc`);
 
 --
--- Indices de la tabla `producto`
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_pro`);
 
 --
--- Indices de la tabla `proveedor`
+-- Indexes for table `proveedor`
 --
 ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id_prov`);
 
 --
--- Indices de la tabla `tipo_movimiento`
+-- Indexes for table `tipo_movimiento`
 --
 ALTER TABLE `tipo_movimiento`
   ADD PRIMARY KEY (`id_tmov`);
 
 --
--- Indices de la tabla `unidad_medida`
+-- Indexes for table `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
   ADD PRIMARY KEY (`id_uni`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `acceso`
+-- AUTO_INCREMENT for table `acceso`
 --
 ALTER TABLE `acceso`
   MODIFY `id_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT de la tabla `concepto_general`
+-- AUTO_INCREMENT for table `concepto_general`
 --
 ALTER TABLE `concepto_general`
-  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `det_movimiento`
+-- AUTO_INCREMENT for table `det_movimiento`
 --
 ALTER TABLE `det_movimiento`
-  MODIFY `id_dmov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_dmov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
--- AUTO_INCREMENT de la tabla `entidad`
+-- AUTO_INCREMENT for table `entidad`
 --
 ALTER TABLE `entidad`
-  MODIFY `id_ent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `modulo`
+-- AUTO_INCREMENT for table `modulo`
 --
 ALTER TABLE `modulo`
   MODIFY `id_mod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
--- AUTO_INCREMENT de la tabla `movimiento`
+-- AUTO_INCREMENT for table `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT de la tabla `perfil`
+-- AUTO_INCREMENT for table `perfil`
 --
 ALTER TABLE `perfil`
   MODIFY `id_per` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `persona`
+-- AUTO_INCREMENT for table `persona`
 --
 ALTER TABLE `persona`
   MODIFY `id_pers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `procedencia`
+-- AUTO_INCREMENT for table `procedencia`
 --
 ALTER TABLE `procedencia`
   MODIFY `id_proc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT de la tabla `proveedor`
+-- AUTO_INCREMENT for table `proveedor`
 --
 ALTER TABLE `proveedor`
   MODIFY `id_prov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tipo_movimiento`
+-- AUTO_INCREMENT for table `tipo_movimiento`
 --
 ALTER TABLE `tipo_movimiento`
   MODIFY `id_tmov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `unidad_medida`
+-- AUTO_INCREMENT for table `unidad_medida`
 --
 ALTER TABLE `unidad_medida`
-  MODIFY `id_uni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_uni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `acceso`
+-- Constraints for table `acceso`
 --
 ALTER TABLE `acceso`
   ADD CONSTRAINT `fk_modulo_acceso` FOREIGN KEY (`id_mod`) REFERENCES `modulo` (`id_mod`),
   ADD CONSTRAINT `fk_perfil_acceso` FOREIGN KEY (`id_per`) REFERENCES `perfil` (`id_per`);
 
 --
--- Filtros para la tabla `persona`
+-- Constraints for table `persona`
 --
 ALTER TABLE `persona`
   ADD CONSTRAINT `fk_perfil_persona` FOREIGN KEY (`id_per`) REFERENCES `perfil` (`id_per`);
